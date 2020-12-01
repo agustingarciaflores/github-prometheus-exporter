@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: monitoring
+  creationTimestamp: null
+  labels:
+    app: pushgateway
+  name: pushgateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pushgateway
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: pushgateway
+    spec:
+      containers:
+      - image: prom/pushgateway
+        name: pushgateway
+        ports:
+        - containerPort: 9091
+status: {}

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: pushgateway
+spec:
+  host: ${HOST}.${NAMESPACE}.${OPENSHIFT_DEFAULT_SUBDOMAIN}
+  tls:
+    insecureEdgeTerminationPolicy: Allow
+    termination: edge
+  to:
+    kind: Service
+    name: pushgateway
